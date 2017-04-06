@@ -1,4 +1,4 @@
-import time
+#import time
 day = [0,31,28,31,30,31,30,31,31,30,31,30,31] #매 월 날짜 모음
 wday = ["일요일 입니다.", "월요일 입니다", "화요일 입니다", "수요일 입니다",
         "목요일 입니다", "금요일 입니다.", "토요일 입니다" ] #날짜의 선언
@@ -16,17 +16,19 @@ Day = int(input("Day : ")) #날짜의 입력
 while Day<=0 or Day>day[Month] :
     Day = int(input("Day : ")) #입력받은 달의 날짜수를 초과할 수 없고 0이하가 될 수 없음.
 
-def pdc(Year) : #윤년 구하기
+'''def pdc(Year) : #윤년 구하기
     global ld #이 함수에서 외부 변수 ld를 쓰기 위해서 처리해줌.
     for i in range(1,Year) :
-        if i % 400 == 0 or (i % 4 == 0 and i % 100 != 0) : ld += 1 #윤년인 년마다 지난 날짜 추가
+        if i % 400 == 0 or (i % 4 == 0 and i % 100 != 0) : ld += 1 #윤년인 년마다 지난 날짜 추가'''
 
-start = time.time() #시간 측정 시작
+#start = time.time() #시간 측정 시작
 for i in range(1,Month) :
     ld += day[i] #입력받은 달 수 만큼 그 달에 해당하는 날짜를 더해줌.
 ld += (Year-1)*365 + Day #입력받은 년도 만큼 지난 날 수를 구해줌
-pdc(Year) #윤년 구하기 함수 호출
+for i in range(1, Year):
+    if i % 400 == 0 or (i % 4 == 0 and i % 100 != 0): ld += 1  # 윤년인 년마다 지난 날짜 추가
+#pdc(Year) #윤년 구하기 함수 호출
 print (ld) #지난 날 수 호출
 print (wday[ld%7]) #지난 날 수를 7로 나눈 나머지에 적합한 날짜를 불러옴
-end = time.time() #시간 측정 종료
-print(end-start) #경과시간 표기
+#end = time.time() #시간 측정 종료
+#print(end-start) #경과시간 표기
