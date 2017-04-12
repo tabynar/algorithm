@@ -13,17 +13,18 @@ for i in range(1,Month) : ld += day[i]
 ld += (Year-1)*365 + Day
 for i in range(1, Year):
     if i % 400 == 0 or (i % 4 == 0 and i % 100 != 0): ld += 1
+
 ld += n
+if Year % 400 == 0 or (Year % 4 == 0 and Year % 100 != 0) : day[2] = 29
 
 for i in range(n) :
     Day+=1
-    if Day==day[Month] :
-        Day=0
+    if Day>=day[Month] :
+        Day=Day%day[Month]
         Month=Month%12+1
         if Month==1 :
             Year+=1
-            if Year % 400 == 0 or (Year % 4 == 0 and Year % 100 != 0) : day[2]=29
-            else : day[2]=28
+            if Year % 400 == 0 or (Year % 4 == 0 and Year % 100 != 0): day[2] = 29
+            else : day[2] = 28
 print(Year,"-",Month,"-",Day)
-print (ld)
-print (wday[ld%7])
+print (ld,"일 경과",wday[ld%7])
