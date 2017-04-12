@@ -19,7 +19,7 @@ if Year % 400 == 0 or (Year % 4 == 0 and Year % 100 != 0) : day[2] = 29
 
 for i in range(n) :
     Day+=1
-    if Day>=day[Month] :
+    if Day>day[Month] :
         Day=Day%day[Month]
         Month=Month%12+1
         if Month==1 :
