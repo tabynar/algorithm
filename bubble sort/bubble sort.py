@@ -8,7 +8,9 @@ for i in range(c) :
 for i in range(c-1) :
     for j in range(ca) :
         if(a[j]>a[j+1]) :
-            a[j],a[j+1]=a[j+1],a[i]
+            null = a[j]
+            a[j] = a[j+1]
+            a[j+1] = null
     ca -= 1
 
 for i in range(c) :
