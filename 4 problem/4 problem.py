@@ -11,27 +11,27 @@ def dice() :
     print("avr :",sn/n)
 
 def landmine() :
-    n = int(input("plz call the number of 1 to 10 : "))
+    n = int(input("원하는 확률을 입력해주세요. : "))
     arr = [0 for i in range(1,102)]
     TF = 0
 
     for i in range(10) :
         for j in range(10) :
-            while TF == 0:
+            while TF==0:
                 rn = random.randint(1, 100)
-                if arr[rn] == 0:
-                    if rn <= 10*n : print("#",end=" ")
+                if arr[rn] == 0 :
+                    if rn <= n : print("#",end=" ")
                     else : print(".",end=" ")
                     arr[rn] = 1
-                    TF = 1
-            TF = 0
-        print("")
+                    TF=1
+            TF=0
+        print()
 
 def yellow() :
     name = []
-    TF = 0
+    n = 0
 
-    while TF == 0 :
+    while n != 9 :
         print("1. 친구 리스트 출력")
         print("2. 친구추가")
         print("3. 친구삭제")
@@ -40,14 +40,25 @@ def yellow() :
         n = int(input("메뉴를 선택하시오: "))
 
         if n == 1 : print(name)
-        elif n == 2 : name.append(input())
-        elif n == 3 : name.remove(input())
+        elif n == 2 :
+            named = input("추가할 이름을 입력해주세요 : ")
+            name.append(named)
+            print("이름이 추가되었습니다.")
+        elif n == 3 :
+            named = input("삭제할 이름을 입력해주세요 : ")
+            if named in name :
+                name.remove(named)
+                print("이름이 제거되었습니다.")
+            else : print("해당하는 이름이 존재하지 않습니다.")
         elif n == 4 :
-            named = input()
-            dn = name.index(named)
-            name.remove(named)
-            name.insert(dn,input())
-        elif n == 9 : TF = 1
+            named = input("삭제할 이름을 입력해주세요 : ")
+            if named in name :
+                dn = name.index(named)
+                name.remove(named)
+                name.insert(dn, input("변경할 이름을 입력해주세요 : "))
+                print("변경이 완료되었습니다.")
+            else : print("해당하는 이름이 존재하지 않습니다.")
+        elif n != 9 : print("해당하는 메뉴가 없습니다")
 
 def lotto() :
     num = [0 for i in range(1,10)]
@@ -72,11 +83,12 @@ def lotto() :
         cn -= 1
     for i in range(7) : print(num[i])
 
-#Main
+#Main Function
 print("1: dice\n2: landmin\n3: yellow\n4: lotto")
-n = int(input())
+num = int(input())
 
-if n == 1 : dice()
-elif n == 2 : landmine()
-elif n == 3 : yellow()
-elif n == 4 : lotto()
+if num == 1 : dice()
+elif num == 2 : landmine()
+elif num == 3 : yellow()
+elif num == 4 : lotto()
+else : print("해당하는 메뉴가 존재하지 않습니다.")
